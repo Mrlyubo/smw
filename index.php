@@ -7,7 +7,7 @@ if(mysqli_connect_errno()){
 
 $query = mysqli_query($con,"INSERT INTO `test` (`id`, `name`) VALUES ('2', 'double')");
 
- ?>//
+ ?>
 
 
 <!DOCTYPE html>
