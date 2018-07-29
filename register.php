@@ -6,7 +6,7 @@ if(mysqli_connect_errno()){
 }
 
 //Declaring variables to prevent errors
-$fname = "";//dfd 
+$fname = "";
 $lname = "";
 $em = "";//email
 $em2 = "";
