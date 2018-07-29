@@ -75,7 +75,7 @@ if(isset($_POST['register_button'])){
 
 	if(strlen($lname)>25 || strlen($lname)<2){
 		array_push($error_array, "Your last name must be between 2 and 25 characters.");
-	}//
+	}//text
 
 	if($password != $password2){
 		array_push($error_array, "Your passwords do not match.");
