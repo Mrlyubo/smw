@@ -98,12 +98,13 @@ if(isset($_POST['register_button'])){
 		//echo $username;
 		$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
 		//echo mysqli_num_rows($check_username_query);
-		$i = 0;
+
 		//if usrname exists add number to username
+		$i = 0;
 		while(mysqli_num_rows($check_username_query) != 0){
 			$i++;// Add 1 to i;
 			$username = $username . "_" . $i;
-			echo $username;
+			//echo $username;
 			$check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
 		}
 
@@ -118,6 +119,14 @@ if(isset($_POST['register_button'])){
 
 		$query = mysqli_query($con, "INSERT INTO users VALUES
 			('','$fname','$lname','$username','$em','$password','$date','$profile_pic','0','0','no',',')");
+		array_push($error_array, "<span style='color:#14C800'>You're all set! Go ahead and login!</span><br>");
+
+		//Clear session variables
+		$_SESSION['reg_fname']="";
+		$_SESSION['reg_lname']="";
+		$_SESSION['reg_email']="";
+		$_SESSION['reg_email2']="";
+
 
 	}
 }
@@ -176,6 +185,9 @@ if(isset($_POST['register_button'])){
 		else if(in_array("Your password must be between 5 and 30 characters.<br>", $error_array))
 			echo "Your password must be between 5 and 30 characters.<br>"; ?>
 		<input type="submit" name="register_button" value="Register">
+		<br>
+		<?php if(in_array("<span style='color:#14C800'>You're all set! Go ahead and login!</span><br>", $error_array))
+				echo "<span style='color:#14C800'>You're all set! Go ahead and login!</span><br>"; ?>
 	</form>
 </body>
 </html>
