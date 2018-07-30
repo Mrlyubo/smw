@@ -2,7 +2,6 @@
 require 'config/config.php';
  ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>

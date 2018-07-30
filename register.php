@@ -9,6 +9,7 @@ require 'includes/form_handlers/login_handler.php';
 <html>
 <head>
 	<title>Welcom to Turbofeed!</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/register_style.css">
 </head>
 <body>
 	<form class="" action="register.php" method="post">
