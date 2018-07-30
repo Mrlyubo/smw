@@ -10,6 +10,15 @@ require 'includes/form_handlers/register_handler.php';
 	<title>Welcom to Turbofeed!</title>
 </head>
 <body>
+	<form class="" action="register.php" method="post">
+		<input type="email" name="log_email" placeholder="Email Address">
+		<br>
+		<input type="password" name="log_password" placeholder="Password">
+		<br>
+		<input type="submit" name="login_button" value="Login">
+		<br>
+	</form>
+
 	<form accept="rester.php" method="POST" >
 		<input type="text" name="reg_fname" placeholder="First Name" value="<?php
 			if(isset($_SESSION['reg_fname'])){
