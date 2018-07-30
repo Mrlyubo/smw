@@ -10,31 +10,40 @@ require 'includes/form_handlers/login_handler.php';
 <head>
 	<title>Welcom to Turbofeed!</title>
   <link rel="stylesheet" type="text/css" href="assets/css/register_style.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css"> -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
 </head>
 
 <body>
   <div class="wrapper">
+
     <div class="login_box">
-      	<form class="" action="register.php" method="post">
-      		<input type="email" name="log_email" placeholder="Email Address" value="<?php
-      			if(isset($_SESSION['log_email'])){
-      				echo $_SESSION['log_email'];
-      			}
-      		?>" required>
-      		<br>
+      <div class="login_header">
+          <h2>Turbofeed!</h2>
+          login or signup below!
+      </div>
+      	<form class="ui form" action="register.php" method="post">
+
+            <input type="email" name="log_email" placeholder="Email Address" value="<?php
+              if(isset($_SESSION['log_email'])){
+                echo $_SESSION['log_email'];
+              }
+            ?>" required>
+            <br>
+
+
       		<input type="password" name="log_password" placeholder="Password">
       		<br>
-      		<input type="submit" name="login_button" value="Login">
+      		<input class = "ui blue basic button" type="submit" name="login_button" value="Login">
       		<br>
       		<?php if(in_array("Email or password wos incorrect<br>", $error_array))
       			echo "Email or password wos incorrect<br>" ?>
       	</form>
 
-      	<form accept="rester.php" method="POST" >
+      	<form class="ui form" accept="rester.php" method="POST" >
       		<input type="text" name="reg_fname" placeholder="First Name" value="<?php
       			if(isset($_SESSION['reg_fname'])){
       				echo $_SESSION['reg_fname'];
@@ -79,7 +88,7 @@ require 'includes/form_handlers/login_handler.php';
       			echo "Your password can only contain English characters or numbers.<br>";
       		else if(in_array("Your password must be between 5 and 30 characters.<br>", $error_array))
       			echo "Your password must be between 5 and 30 characters.<br>"; ?>
-      		<input type="submit" name="register_button" value="Register">
+      		<input class = "ui blue basic button" type="submit" name="register_button" value="Register">
       		<br>
       		<?php if(in_array("<span style='color:#14C800'>You're all set! Go ahead and login!</span><br>", $error_array))
       				echo "<span style='color:#14C800'>You're all set! Go ahead and login!</span><br>"; ?>
