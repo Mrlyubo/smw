@@ -1,13 +1,7 @@
 <?php
-require 'config/config.php';
- ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>hello!</title>
-</head>
-<body>
-	hi!
+  include("includes/header.php");
+  //session_destroy();
+?>
+	hi
 </body>
 </html>

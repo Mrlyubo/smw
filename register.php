@@ -2,6 +2,7 @@
 require 'config/config.php';
 require 'includes/form_handlers/register_handler.php';
 require 'includes/form_handlers/login_handler.php';
+
  ?>
 
 
@@ -10,10 +11,9 @@ require 'includes/form_handlers/login_handler.php';
 <head>
 	<title>Welcom to Turbofeed!</title>
   <link rel="stylesheet" type="text/css" href="assets/css/register_style.css">
-  <script src="assets/jquery-3.3.1.min.js"></script>
-
- <script type="text/javascript" src = "assets/js/register.js"></script>  <!--put jquery before the register.js -->
- <link href="https://fonts.googleapis.com/css?family=Kalam:700|Merienda|Roboto:400,700" rel="stylesheet">
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src = "assets/js/register.js"></script>  <!--put jquery before the register.js -->
+  <link href="https://fonts.googleapis.com/css?family=Kalam:700|Merienda|Roboto:400,700" rel="stylesheet">
   <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
   <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css"> -->
