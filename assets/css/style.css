@@ -6,10 +6,13 @@
   /* border-bottom: 0.25em solid #1894ca; */
   margin: 0 0 10px 0;
   display: inline-flex;
+  position: fix;
+  z-index: 10;
 }
 
 body {
   line-height: 25px;
+  /* background-color: #E6EAE8; */
 }
 
 .logo a {
@@ -20,7 +23,7 @@ body {
   position: relative;
   top: 13px;
   color: #1086BA;
-  text-shadow: #73B6E2 0.5px 0.5px 0px;
+  /* text-shadow: #73B6E2 0.5px 0.5px 0px; */
 
 }
 
@@ -46,4 +49,93 @@ nav a {
 
 nav a：hover {
   border-bottom: 7px solid;
+}
+.thumbnail img {
+    width: 60%;
+}
+.wrapper{
+  margin:0 auto;
+  top: 50px;
+  position:relative;
+  padding:0 10px;
+  width:75%;
+  min-width:950px;
+}
+.column{
+  background-color: #fff;
+
+  padding:8px;
+  /* border-radius: 5px; */
+  z-index: -1;
+}
+
+.user_details{
+  width: 350px;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.user_details_left_right {
+  width: 125px;
+  display: inline-block;
+  position: absolute;
+}
+
+.user_details img {
+  height: 125ps;
+  /* border-radius: 5px; */
+  margin-right: 5px;
+}
+
+#name{
+  color: #217da5;
+  font-style: italic;
+  font-size: 100%;
+  font-family: 'Merienda';
+}
+#navname{
+
+  font-style: italic;
+
+  font-family: 'Merienda';
+}
+
+.main_column {
+  float: right;
+  width: 70%;
+  z-index: -1;
+  min-height: 160px;
+}
+
+.post_form {
+  width:100%;
+}
+
+.post_form textarea{
+  width:83%;
+  height: 60px;
+  /* border-radius: 3px; */
+  margin-right: 5px;
+  padding: 5px ;
+
+}
+
+.post_form input[type = 'submit']{
+  width: 10%;
+  height: 60px;
+  border: none;
+  color: #fff;
+  /* border-radius: 5px; */
+  background-color: #3498db;
+  font-family: 'Merienda';
+  /* text-shadow: #73B6E2 0.5px 0.5px 0px; */
+  font-size: 120%;
+  position: absolute;
+  outline: 0;
+  margin: 0;
+}
+
+.post_form input[type = 'submit']:active{
+  padding:6px 5px 5px 6px;
+  color:#73B6E2;
 }
