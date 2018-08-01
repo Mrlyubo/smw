@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-  
+    alert("register.js！")；
     //On click signup, hide login and show registration form
     $("#signup").click(function(){
       $("#first").slideUp("slow", function(){

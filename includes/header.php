@@ -2,6 +2,7 @@
 
 require 'config/config.php';
 
+
 if(isset($_SESSION['username'])){
   $userLoggedIn = $_SESSION['username'];
   //echo isset($_SESSION['username']);
