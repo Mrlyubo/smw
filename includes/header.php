@@ -33,7 +33,7 @@ if(isset($_SESSION['username'])){
       <a href="index.php">Turbofeed!</a>
     </div>
     <nav>
-      <a href="<?php echo $userLoggedIn?>" id = 'navname'>
+      <a href="<?php echo $userLoggedIn?>" id = 'navname' style="font-family: 'Merienda'">
         <?php echo $user['first_name']?>
       </a>
       <a href="#">

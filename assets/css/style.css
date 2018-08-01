@@ -56,8 +56,8 @@ nav a：hover {
 }a
 
 #navname {
-  font-style: italic;
-  font-family: 'Merienda';
+    font-family: 'Merienda';
+    font-style: italic;
 }
 /******************************************/
 
@@ -86,7 +86,7 @@ nav a：hover {
 }
 
 .user_details_left_right {
-  width: 60px;
+
   display: inline-block;
   position: absolute;
   float:left;
@@ -135,4 +135,17 @@ nav a：hover {
 .post_form input[type='submit']:active {
   padding: 6px 5px 5px 6px;
   color: #73B6E2;
+}
+/*******************************/
+.status_post {
+    width: 96%;
+    font-size: 15px;
+    padding: 0 5px;
+    min-height: 75px;
+
+}
+
+.post_profile_pic {
+    float: left;
+    margin-right: 7px;
 }
