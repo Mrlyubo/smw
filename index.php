@@ -58,7 +58,7 @@
       $.ajax({
           url: "includes/handlers/ajax_load_posts.php",
           type: "POST",
-          data: "page=1&userLoggedIn=" + userLoggedIn,
+          data: "page=1&userLoggedIn=" + userLoggedIn,//store data in $_REQUEST
           cache:false,//no space between cache and false;
 
           success: function(data){
@@ -78,7 +78,7 @@
          var scrollH = document.documentElement.scrollHeight||document.body.scrollHeight;
          var clientH = document.documentElement.clientHeight||document.body.clientHeight;
 
-         if (scrollT == scrollH - clientH && noMorePosts == 'false') {
+         if (scrollT == scrollH - clientH && noMorePosts == 'false') {//if scroll to the bottom
 			//if (noMorePosts == 'false') {
 
 				$('#loading').show();
