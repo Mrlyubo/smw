@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
+
         <?php
 
         require 'config/config.php';
@@ -21,7 +22,7 @@
         }else{
           header("Location: register.php");
         }
-         ?>
+        ?>
          <script>
              function toggle() {
                  var element = document.getElementById("comment_section");
@@ -58,7 +59,8 @@
      		echo "<p>Comment Posted! </p>";
      	}
      	?>
-        <form action="comment_frame.php?post_id=<?php echo $post_id; ?>" id="comment_form" name="postComment<?php echo $post_id; ?>" method="POST">
+        <form action="comment_frame.php?post_id=<?php echo $post_id; ?>" id="comment_form" name="postComment<?php echo $post_id; ?>"
+            method="POST">
     		<textarea name="post_body"></textarea>
     		<input type="submit" name="postComment<?php echo $post_id; ?>" value="Post">
     	</form>
@@ -132,14 +134,18 @@
                 ?>
                 <div class="comment_section">
                     <a href="<?php echo $posted_by;?>"  target="_parent"><img src="<?php echo $user_obj->getProfilePic(); ?>"
-                        title="<?php echo $posted_by;?>" style="float:left;" height="30"></a>
-                    <a href="<?php echo $posted_by;?>" target="_parent"> <b><?php echo $user_obj->getFirstAndLastName();?></b></a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $time_message."<br>".$comment_body;?>
+                        title="<?php echo $posted_by;?>" style="float:left;" height="35"></a>
+                    <a href="<?php echo $posted_by;?>" id = "comment_info" target="_parent" height="10" > <b><?php echo "&nbsp".$user_obj->getFirstAndLastName();?></b></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $time_message."<br>"."&nbsp".$comment_body;?>
                     <hr>
                 </div>
                 <?php
              }//End while($comment = mysqli_fetch_array($get_comments))
+
          }//End if($count != 0)
+         else{
+             echo "<center><br><br>No Comments to Show!</center>";
+         }
         ?>
 
 

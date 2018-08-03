@@ -1,5 +1,5 @@
 body {
-  line-height: 25px;
+  line-height: 20px;
   /* background-color: #E6EAE8; */
 }
 
@@ -28,7 +28,10 @@ body {
 a:hover {
   text-decoration: none;
 }
-
+a{
+    text-decoration: none;
+    color:#20AAE5;
+}
 nav {
   float: right;
   right: 1px;
@@ -142,10 +145,112 @@ nav a：hover {
     font-size: 15px;
     padding: 0 5px;
     min-height: 75px;
+    cursor: pointer;
 
 }
 
 .post_profile_pic {
     float: left;
     margin-right: 7px;
+}
+/***********************************/
+#comment_iframe{
+    max-height: 250px;
+    width: 100%;
+}
+
+.comment_section {
+    font-size:90%;
+
+}
+
+.comment_section img {
+    padding:0px 5px 5px 5px;
+}
+.comment_section a{
+    text-decoration: none;
+}
+
+#comment_form textarea {
+    width:85%;
+    height: 35px;
+    font-size: 14px;
+    margin: 3px 3px 3px 5px;
+}
+
+#comment_form input[type='submit'] {
+    background-color: #3498db;
+    border: none;
+    color:#fff;
+    width: 13%;
+    height: 40px;
+    margin: 3px;
+    position: absolute;
+    font-family: 'Merienda';
+    font-style: italic;
+}
+.newsfeedPostOptions {
+    padding: 0px;
+    text-decoration: none;
+    color: #20AAE5;
+    border: none;
+}
+/*******************************/
+.newsfeedPostOptions iframe {
+    border: 0;
+    height: 17px;
+    width: 120px;
+}
+.newsfeedPostOptions form {
+    position:absolute;
+    top:0;
+}
+
+.comment_like {
+    background-color: #fff;
+    border:none;
+    font-size: 14px;
+    color: #3498db;
+    padding:0;
+    height:auto;
+    width:auto;
+    margin:0;
+}
+
+.like_value {
+    display: inline;
+    font-size: 14px;
+}
+/*  */
+.profile_left {
+    top: -60px;
+    width: 17%;
+    max-width: 240px;
+    min-width: 130px;
+    height: 1000px;
+    float: left;
+    position: relative;
+    background-color:#37B0E9;
+    border-right: 10px solid #83D6FE;
+    color: #fff;
+    margin-right: 20px;
+}
+.profile_left img {
+    min-width: 80px;
+    width: 55%;
+    border: 5px solid #83D6FE;
+    border-radius:100px;
+    margin:20px;
+}
+
+.profile_info {
+    display: list-item;
+    background-color: #2980b9;
+    width:100%;
+    padding:10px 0 10px 0;
+}
+
+.profile_info p {
+    margin: 0 0 0 20px;
+    word-wrap: break-word;
 }

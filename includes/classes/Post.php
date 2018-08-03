@@ -116,6 +116,10 @@ class Post {
                     </script>
 
                     <?php
+
+                    $comments_check = mysqli_query($this->con, "SELECT * FROM comments WHERE post_id = '$id'");
+                    $comments_check_num = mysqli_num_rows($comments_check);
+
                     //Timeframe
                     $date_time_now = date("Y-m-d H:i:s");
                     $start_date = new DateTime($date_time);//Time of post
@@ -174,10 +178,14 @@ class Post {
                                     <a href = '$added_by' style = 'color:#217da5;'> $first_name $last_name</a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;
                                     $time_message
                                 </div>
-                                <div id = 'post_body'>$body<br></div>
-                            </div>
-                            <div class = 'post_comment' id = 'toggleComment$id' style='display:none;'>
-                                <iframe src = 'comment_frame.php?post_id=$id' id = 'comment_iframe' frameborder = '0'></iframe>
+                                <div id = 'post_body'>$body<br><br><br></div>
+                                <div class = 'post_comment' id = 'toggleComment$id' style='display:none;'>
+                                    <iframe src = 'comment_frame.php?post_id=$id' id = 'comment_iframe' frameborder = '0'></iframe>
+                                </div>
+                                <div class='newsfeedPostOptions'>
+                                    Comments($comments_check_num)&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <iframe src = 'like.php?post_id=$id' scrolling = 'no'></iframe>
+                                </div>
                             </div>
                             <hr>";
                 }// End if isFriend

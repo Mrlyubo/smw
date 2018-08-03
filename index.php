@@ -46,6 +46,7 @@
 
   </div>
 
+<!-- //continue load posts when scroll to the bottom. -->
  <script>
 
   var userLoggedIn = '<?php echo $userLoggedIn; ?>';
@@ -69,7 +70,7 @@
       });
 
       $(window).scroll(function(){
-          
+
           //$('#load_more').on("click", function() {
          var height = $('.posts_area').height();//Div containing posts_area
          var scroll_top = $(this).scrollTop();

@@ -11,7 +11,7 @@ $date = "";//Sign up date
 $error_array = array();
 
 if(isset($_POST['register_button'])){
-
+	//echo "handdler.php";
 	//Registration form values
 
 	//First Name
