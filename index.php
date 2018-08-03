@@ -1,7 +1,6 @@
 <?php
   include("includes/header.php");
-  include("includes/classes/User.php");
-  include("includes/classes/Post.php");
+
 
   if(isset($_POST['post'])){
       $post = new Post($con, $userLoggedIn);
@@ -46,7 +45,7 @@
 
   </div>
 
-<!-- //continue load posts when scroll to the bottom. -->
+<!-- continue load posts when scroll to the bottom. -->
  <script>
 
   var userLoggedIn = '<?php echo $userLoggedIn; ?>';
@@ -116,5 +115,6 @@
 
 
   </div>
+  
 </body>
 </html>
