@@ -56,42 +56,71 @@
             <p><?php echo "Friends: ".$num_friends; ?></p>
         </div>
 
-    <!-- //Add Friend -->
-    <form action="<?php echo $username; ?>" method="POST">
-        <?php
-        $profile_user_obj = new User($con, $username);
-        if($profile_user_obj->isClosed()) {
-            header("Location: user_closed.php");
-        }
-
-        $logged_in_user_obj = new User($con, $userLoggedIn);
-
-        if($userLoggedIn != $username) {
-
-            if($logged_in_user_obj->isFriend($username)) {
-                echo '<input type="submit" name="remove_friend" class="danger" value="Remove Friend"><br>';
-            }
-            else if ($logged_in_user_obj->didReceiveRequest($username)) {
-                echo '<input type="submit" name="respond_request" class="warning" value="Respond to Request"><br>';
-            }
-            else if ($logged_in_user_obj->didSendRequest($username)) {
-                echo '<input type="submit" name="" class="default" value="Request Sent"><br>';
-            }
-            else{
-                echo '<input type="submit" name="add_friend" class="success" value="Add Friend"><br>';
+        <!-- //Add Friend -->
+        <form action="<?php echo $username; ?>" method="POST">
+            <?php
+            $profile_user_obj = new User($con, $username);
+            if($profile_user_obj->isClosed()) {
+                header("Location: user_closed.php");
             }
 
+            $logged_in_user_obj = new User($con, $userLoggedIn);
 
-        }
+            if($userLoggedIn != $username) {
 
-        ?>
-    </form>
+                if($logged_in_user_obj->isFriend($username)) {
+                    echo '<input type="submit" name="remove_friend" class="danger" value="Remove Friend"><br>';
+                }
+                else if ($logged_in_user_obj->didReceiveRequest($username)) {
+                    echo '<input type="submit" name="respond_request" class="warning" value="Respond to Request"><br>';
+                }
+                else if ($logged_in_user_obj->didSendRequest($username)) {
+                    echo '<input type="submit" name="" class="default" value="Request Sent"><br>';
+                }
+                else{
+                    echo '<input type="submit" name="add_friend" class="success" value="Add Friend"><br>';
+                }
+            }
+
+            ?>
+        </form>
+
+        <input type="submit" class="deep_blue" data-toggle="modal" data-target="#post_form" value="Post Something">
+        </div>
+        <div class="main_column column">
+            <?php echo $username;?>
+
+    </div><!-- End <div class="profile_left"> -->
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="post_form" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel" style="float:'left';">Post something!</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+          </div>
+          <div class="modal-body">
+            <p>This will appear on the user's profile page and also their newsfeed for your friends to see!</p>
+            <form class="profile_post" action="" method="POST">
+                <div class="form-group">
+                    <textarea class = "form-control" name="post_body"></textarea>
+                    <input type="hidden" name="user_from" value="<?php echo $userLoggedIn;?>">
+                    <input type="hidden" name="user_ro" value="<?php echo $username;?>">
+                </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Post</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="main_column column">
-        <?php echo $username;?>
-
-    </div>
-
 
 
   </div>

@@ -40,7 +40,7 @@ if(isset($_SESSION['username'])){
       </a>
       <a href="#">
         <i class = "fa fa-home fa-lg"></i>
-      </a>
+      </a> 
       <a href="#">
         <i class = "fa fa-envelope fa-lg"></i>
       </a>
