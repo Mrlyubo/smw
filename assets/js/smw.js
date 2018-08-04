@@ -1,0 +1,17 @@
+$(document).ready(function() {
+  
+  $('#submit_profile_post').click(function(){
+      $.ajax({
+          url: "includes/handlers/ajax_submit_profile_post.php",
+          type: "POST",
+          data: $('form.profile_post').serialize(),
+          success: function(msg) {
+              $("#post_form").modal('hide');
+              location.reload();
+          },
+          error: function() {
+              alert('Failure');
+          }
+      });
+  });
+});

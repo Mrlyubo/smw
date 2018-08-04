@@ -23,22 +23,22 @@
     	header("Location: requests.php");
     }
 
-    if(isset($_POST['post_message'])) {
-      if(isset($_POST['message_body'])) {
-        $body = mysqli_real_escape_string($con, $_POST['message_body']);
-        $date = date("Y-m-d H:i:s");
-        $message_obj->sendMessage($username, $body, $date);
-      }
-
-      $link = '#profileTabs a[href="#messages_div"]';
-      echo "<script>
-              $(function() {
-                  $('" . $link ."').tab('show');
-              });
-            </script>";
-
-
-    }
+    // if(isset($_POST['post_message'])) {
+    //   if(isset($_POST['message_body'])) {
+    //     $body = mysqli_real_escape_string($con, $_POST['message_body']);
+    //     $date = date("Y-m-d H:i:s");
+    //     $message_obj->sendMessage($username, $body, $date);
+    //   }
+    //
+    //   $link = '#profileTabs a[href="#messages_div"]';
+    //   echo "<script>
+    //           $(function() {
+    //               $('" . $link ."').tab('show');
+    //           });
+    //         </script>";
+    //
+    //
+    // }
 
 
 ?>
@@ -83,44 +83,52 @@
             }
 
             ?>
-        </form>
 
-        <input type="submit" class="deep_blue" data-toggle="modal" data-target="#post_form" value="Post Something">
-        </div>
+        </form>
+        <input type="submit" class = "deep_blue" data-toggle = "modal" data-target="#post_form" name="" value="Post Something">
+
+        </div><!-- End <div class="profile_left"> -->
+
         <div class="main_column column">
             <?php echo $username;?>
 
-    </div><!-- End <div class="profile_left"> -->
+        </div>
+
 
 
 
     <!-- Modal -->
     <div class="modal fade" id="post_form" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog">
         <div class="modal-content">
+
           <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel" style="float:'left';">Post something!</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="postModalLabel">Post something!</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
           </div>
+
           <div class="modal-body">
-            <p>This will appear on the user's profile page and also their newsfeed for your friends to see!</p>
-            <form class="profile_post" action="" method="POST">
-                <div class="form-group">
-                    <textarea class = "form-control" name="post_body"></textarea>
-                    <input type="hidden" name="user_from" value="<?php echo $userLoggedIn;?>">
-                    <input type="hidden" name="user_ro" value="<?php echo $username;?>">
-                </div>
-            </form>
+          	<p>This will appear on the user's profile page and also their newsfeed for your friends to see!</p>
+
+          	<form class="profile_post" action="" method="POST">
+          		<div class="form-group">
+          			<textarea class="form-control" name="post_body"></textarea>
+          			<input type="hidden" name="user_from" value="<?php echo $userLoggedIn; ?>">
+          			<input type="hidden" name="user_to" value="<?php echo $username; ?>">
+          		</div>
+          	</form>
           </div>
+
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Post</button>
+            <button type="button" class="btn btn-primary" name="post_button" id="submit_profile_post">Post</button>
           </div>
         </div>
       </div>
     </div>
+
 
 
   </div>

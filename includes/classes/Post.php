@@ -30,7 +30,7 @@ class Post {
                 '$date_added', 'no', 'no','0')");
             $returned_id = mysqli_insert_id($this->con);
 
-            //Insert notification
+            //Insert no tification
             //Update post count for user
             $num_posts = $this->user_obj->getNumPosts();
             $num_posts++;
@@ -93,6 +93,11 @@ class Post {
                     }else{
                         $count++;
                     }
+
+                    if($userLoggedIn == $added_by)
+						$delete_button = "<button class='delete_button btn-danger' id='post$id'>X</button>";
+					else
+						$delete_button = "";
 
                     $user_details_query = mysqli_query($this->con, "SELECT first_name, last_name, profile_pic FROM
                     users WHERE username = '$added_by'");
@@ -176,7 +181,7 @@ class Post {
                                 </div>
                                 <div class = 'posted_by' style = 'color:#ACACAC;'>
                                     <a href = '$added_by' style = 'color:#217da5;'> $first_name $last_name</a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;
-                                    $time_message
+                                    $time_message $delete_button
                                 </div>
                                 <div id = 'post_body'>$body<br><br><br></div>
                                 <div class = 'post_comment' id = 'toggleComment$id' style='display:none;'>
@@ -189,6 +194,22 @@ class Post {
                             </div>
                             <hr>";
                 }// End if isFriend
+                ?>
+                <script>//Once delete button was clicked
+                    $(document).ready(function() {
+                        $('#post<?php echo $id; ?>').on('click', function() {//Once delete button was clicked
+                            bootbox.confirm("Are you sure you want to delete this post?", function(result) {
+
+                                $.post("includes/form_handlers/delete_post.php?post_id=<?php echo $id; ?>", {result:result});
+
+                                if(result)
+                                    location.reload();
+                            });
+                        });
+                    });
+                </script>
+                <?php
+
             }//End while($row = mysqli_fetch_array($data_query) > 0)
             if($count > $limit)
 				$str .= "<input type='hidden' class='nextPage' value='" . ($page + 1) . "'>
