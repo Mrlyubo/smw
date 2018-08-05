@@ -90,7 +90,8 @@
         </div><!-- End <div class="profile_left"> -->
 
         <div class="main_column column">
-            <?php echo $username;?>
+            <div class="posts_area"></div>
+            <img id="loading"  src="assets/images/icons/loading.gif" style='width:10%'>
 
         </div>
 
@@ -128,7 +129,71 @@
         </div>
       </div>
     </div>
+<!--  load the profile posts-->
+    <script>
 
+     var userLoggedIn = '<?php echo $userLoggedIn; ?>';
+     var profileUsername = "<?php echo $username;?>";
+     $(document).ready(function() {
+
+         $('#loading').show();
+
+
+         //Original ajax request for loading first Posts
+         $.ajax({
+             url: "includes/handlers/ajax_load_profile_posts.php",
+             type: "POST",
+             data: "page=1&userLoggedIn=" + userLoggedIn + "&profileUsername=" + profileUsername,//store data in $_REQUEST
+             cache:false,//no space between cache and false;
+
+             success: function(data){
+                 $('#loading').hide();
+                 $('.posts_area').html(data);
+             }
+         });
+
+         $(window).scroll(function(){
+
+             //$('#load_more').on("click", function() {
+            var height = $('.posts_area').height();//Div containing posts_area
+            var scroll_top = $(this).scrollTop();
+            var page = $('.posts_area').find('.nextPage').val();
+            var noMorePosts = $('.posts_area').find('.noMorePosts').val();
+
+            var scrollT = document.documentElement.scrollTop||document.body.scrollTop;
+            var scrollH = document.documentElement.scrollHeight||document.body.scrollHeight;
+            var clientH = document.documentElement.clientHeight||document.body.clientHeight;
+
+            if (scrollT == scrollH - clientH && noMorePosts == 'false') {//if scroll to the bottom
+               //if (noMorePosts == 'false') {
+
+                   $('#loading').show();
+
+                   var ajaxReq = $.ajax({
+                       url: "includes/handlers/ajax_load_profile_posts.php",
+                       type: "POST",
+                       data: "page=" + page + "&userLoggedIn=" + "&profileUsername=" + profileUsername,
+                       cache:false,
+
+                       success: function(response) {
+                           $('.posts_area').find('.nextPage').remove(); //Removes current .nextpage
+                           $('.posts_area').find('.noMorePosts').remove(); //Removes current .nextpage
+                           $('.posts_area').find('.noMorePostsText').remove(); //Removes current .nextpage
+
+                           $('#loading').hide();
+                           $('.posts_area').append(response);
+                       }
+                   });
+
+               } //End if
+
+               return false;
+
+           }); //End (window).scroll(function())
+
+
+       });
+     </script>
 
 
   </div>
