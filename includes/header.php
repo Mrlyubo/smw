@@ -2,6 +2,7 @@
 require 'config/config.php';
 include("includes/classes/User.php");
 include("includes/classes/Post.php");
+include("includes/classes/Message.php");
 
 
 if(isset($_SESSION['username'])){
@@ -25,12 +26,16 @@ if(isset($_SESSION['username'])){
   <script src="assets/js/bootstrap.js"></script>
   <script src="assets/js/bootbox.min.js"></script>
   <script src="assets/js/smw.js"></script>
+  <script src="assets/js/jquery.jcrop.js"></script>
+  <script src="assets/js/jcrop_bits.js"></script>
 
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Kalam:700|Merienda|Roboto:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/jquery.Jcrop.css" type="text/css" />
+
 </head>
 <body>
   <div class="top_bar">
@@ -47,7 +52,7 @@ if(isset($_SESSION['username'])){
       <a href="#">
         <i class = "fa fa-envelope fa-lg"></i>
       </a>
-      <a href="#">
+      <a href="javascript:void(0);" conclick  = "getDropdownDate(<?php echo $userLoggedIn;?>,'notification')">
         <i class = "fa fa-bell-o fa-lg"></i>
       </a>
       <a href="requests.php">
@@ -61,6 +66,11 @@ if(isset($_SESSION['username'])){
       </a>
 
     </nav>
+
+    <div class="dropdown_data_window">
+        <input type="hidden" name="dropdown_data_type" value="">
+    </div>
+
   </div>
 
   <div class="wrapper">

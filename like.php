@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" style="background-color: white;">
     <head>
         <meta charset="utf-8">
         <title></title>
@@ -11,6 +11,7 @@
          form {
             position:absolute;
             top:0px;
+            background-color: white;
         }
         </style>
         <?php
@@ -73,18 +74,15 @@
 
 
         if($num_rows > 0) {
-            echo '<form action = "like.php?post_id=' . $post_id . '"method = "POST">
+            echo '<form style="background-color:white; margin:0px;padding:0px;" action = "like.php?post_id=' . $post_id . '"method = "POST">
                     <input type = "submit" class = "comment_like" name = "unlike_button" value = "Unlike">
-                    <div class = "like_value">
-                        '.$total_likes . ' Likes
-                    </div>
+                    <div class = "like_value">'.$total_likes . ' Likes</div>
                   <form>';
         }else{
-            echo '<form action = "like.php?post_id=' . $post_id . '"method = "POST">
-                    <input type = "submit" class = "comment_like" name = "like_button" value = "Like">
+            echo '<form style="background-color:white; margin:0px;padding:0px;" action = "like.php?post_id=' . $post_id . '"method = "POST">
+                    <input style="background-color:white;" type = "submit" class = "comment_like" name = "like_button" value = "Like">
                     <div class = "like_value">
-                        '.$total_likes . ' Likes
-                    </div>
+                        '.$total_likes . ' Likes</div>
                   <form>';
         }
 

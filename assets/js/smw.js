@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  
+
   $('#submit_profile_post').click(function(){
       $.ajax({
           url: "includes/handlers/ajax_submit_profile_post.php",
@@ -15,3 +15,9 @@ $(document).ready(function() {
       });
   });
 });
+
+  function getUsers(value, user) {
+  	$.post("includes/handlers/ajax_friend_search.php", {query:value, userLoggedIn:user}, function(data) {
+  		$(".results").html(data);//in messages.php
+  	});
+  }

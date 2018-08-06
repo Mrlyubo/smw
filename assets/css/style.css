@@ -1,6 +1,6 @@
 body {
   line-height: 20px;
-  /* background-color: #E6EAE8; */
+  background-color: #E6EAE8;
 }
 
 .top_bar {
@@ -83,7 +83,7 @@ nav a：hover {
 }
 
 .user_details {
-  width: 30%;
+  width: 24%;
   float: left;
   margin-bottom: 20px;
 }
@@ -103,9 +103,11 @@ nav a：hover {
 /*******************************/
 .main_column {
   float: right;
-  width: 70%;
+  width: 68%;
   z-index: -1;
   min-height: 250px;
+
+
 }
 
 .post_form {
@@ -196,27 +198,32 @@ nav a：hover {
     text-decoration: none;
     color: #20AAE5;
     border: none;
+    background-color: #fff;
+
 }
 /*******************************/
-.newsfeedPostOptions iframe {
-    border: 0;
-    height: 17px;
-    width: 120px;
+.newsfeedPostOptions {
+	padding: 0px;
+	text-decoration: none;
+	color:#20AAE5;
+	border:none;
 }
-.newsfeedPostOptions form {
-    position:absolute;
-    top:0;
+
+.newsfeedPostOptions iframe {
+	border: 0px;
+	height: 17px;
+	width: 120px;
 }
 
 .comment_like {
-    background-color: #fff;
-    border:none;
-    font-size: 14px;
-    color: #3498db;
-    padding:0;
-    height:auto;
-    width:auto;
-    margin:0;
+	background-color: #fff;
+	border: none;
+	font-size: 14px;
+	color: #3498db;
+	padding: 0;
+	height: auto;
+	width: auto;
+	margin: 0;
 }
 
 .like_value {
@@ -327,14 +334,14 @@ nav a：hover {
 }
 
 .profile_info_bottom {
-	margin: 10 0 0 7px;
+	margin: 10px 0 0 27px;
 
 }
 
 #message_textarea {
 	width: 80%;
 	margin-right: 8px;
-	border-radius: 5px;
+
 	border: 1px solid #D3D3D3;
 	font-size: 12px;
 }
@@ -346,13 +353,13 @@ nav a：hover {
 	border:none;
 	background-color: #20AAE5;
 	color: #156588;
-	border-radius: 5px;
+
 	font-family: 'Bellota-BoldItalic', sans-serif;
 	text-shadow: #73B6E2 0.5px 0.5px 0px;
 }
 .message {
-	border: 1px solid #000;
-	border-radius: 5px;
+	border: none;
+
 	padding: 5px 10px;
 	display: inline-block;
 	color: #fff;
@@ -363,6 +370,7 @@ nav a：hover {
 	border-color: #2980b9;
 	float: right;
 	margin-bottom: 5px;
+    margin-right: 10px;
 }
 .message#green {
 	background-color: #2ecc71;
