@@ -19,7 +19,7 @@ if(isset($_SESSION['username'])){
 <!DOCTYPE html>
 <html>
 <head>
-  <title>hello!</title>
+  <title>Turbofeed!</title>
   <!-- javascript -->
   <!-- <script src="assets/js/smw.js"></script> -->
   <script src="assets/js/jquery-3.3.1.min.js"></script>
@@ -49,10 +49,10 @@ if(isset($_SESSION['username'])){
       <a href="#">
         <i class = "fa fa-home fa-lg"></i>
       </a>
-      <a href="#">
+      <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'message')">
         <i class = "fa fa-envelope fa-lg"></i>
       </a>
-      <a href="javascript:void(0);" conclick  = "getDropdownDate(<?php echo $userLoggedIn;?>,'notification')">
+      <a href="javascript:void(0);" conclick  = "getDropdownDate('<?php echo $userLoggedIn;?>','notification')">
         <i class = "fa fa-bell-o fa-lg"></i>
       </a>
       <a href="requests.php">
@@ -67,10 +67,74 @@ if(isset($_SESSION['username'])){
 
     </nav>
 
-    <div class="dropdown_data_window">
-        <input type="hidden" name="dropdown_data_type" value="">
-    </div>
+    <div class="dropdown_data_window"></div>
+    <input type="hidden" id="dropdown_data_type" value="">
+
 
   </div>
+
+
+  <script>
+  var userLoggedIn = '<?php echo $userLoggedIn; ?>';
+
+  $(document).ready(function() {
+
+      $('.dropdown_data_window').scroll(function() {
+          var inner_height = $('.dropdown_data_window').innerHeight(); //Div containing data
+          var scroll_top = $('.dropdown_data_window').scrollTop();
+
+          var page = $('.dropdown_data_window').find('.nextPageDropdownData').val();// refer to Message.php
+          var noMoreData = $('.dropdown_data_window').find('.noMoreDropdownData').val();
+
+
+
+          if ((scroll_top + inner_height >= $('.dropdown_data_window')[0].scrollHeight) && noMoreData == 'false') {
+
+
+              var pageName; //Holds name of page to send ajax request to
+              var type = $('#dropdown_data_type').val();//comes from header.php
+
+
+              if(type == 'notification'){
+                  
+                  pageName = "ajax_load_notifications.php";
+
+              }
+
+              else if(type == 'message'){
+                  alert("messages!");
+                  pageName = "ajax_load_messages.php";
+
+              }
+
+
+
+              var ajaxReq = $.ajax({
+                  url: "includes/handlers/" + pageName,
+                  type: "POST",
+                  data: "page=" + page + "&userLoggedIn=" + userLoggedIn,
+                  cache:false,
+
+                  success: function(response) {
+                      $('.dropdown_data_window').find('.nextPageDropdownData').remove(); //Removes current .nextpage
+                      $('.dropdown_data_window').find('.noMoreDropdownData').remove(); //Removes current .nextpage
+
+                      alert("success!");
+                      $('.dropdown_data_window').append(response);
+                  }
+              });
+
+          } //End if
+
+          return false;
+
+      }); //End (window).scroll(function())
+
+
+  });
+
+  </script>
+
+
 
   <div class="wrapper">

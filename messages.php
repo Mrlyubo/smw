@@ -18,7 +18,7 @@
        	if(isset($_POST['message_body'])) {
        		$body = mysqli_real_escape_string($con, $_POST['message_body']);
        		$date = date("Y-m-d H:i:s");
-       		$message_obj->sendMessage($username, $body, $date);
+       		$message_obj->sendMessage($user_to, $body, $date);
        	}
 
    }

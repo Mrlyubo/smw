@@ -438,14 +438,22 @@ nav a：hover {
 	margin-left: 10px;
 	font-size: 12px;
 }
-
+img {
+    border-radius: 5px;
+}
 .tab-content {
 	margin-top: 25px;
 }
+#scroll_messages{
+    overflow-x: hidden;
+}
 
+.loaded_conversations{
+    overflow-x: hidden;
+}
 .dropdown_data_window {
     background-color: #fff;
-    border: 1px solid #DADADA;
+    /* border: 1px solid #DADADA; */
     border-radius: 0 0 8px 8px;
     border-top: none;
     width: 300px;
@@ -453,6 +461,7 @@ nav a：hover {
     right: 10px;
     top: 40px;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 .notification_badge {
