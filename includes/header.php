@@ -43,27 +43,44 @@ if(isset($_SESSION['username'])){
       <a href="index.php">Turbofeed!</a>
     </div>
     <nav>
-      <a href="<?php echo $userLoggedIn?>" id = 'navname' style="font-family: 'Merienda'">
-        <?php echo $user['first_name']?>
-      </a>
-      <a href="#">
-        <i class = "fa fa-home fa-lg"></i>
-      </a>
-      <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'message')">
-        <i class = "fa fa-envelope fa-lg"></i>
-      </a>
-      <a href="javascript:void(0);" conclick  = "getDropdownDate('<?php echo $userLoggedIn;?>','notification')">
-        <i class = "fa fa-bell-o fa-lg"></i>
-      </a>
-      <a href="requests.php">
-        <i class = "fa fa-user fa-lg"></i>
-      </a>
-      <a href="#">
-        <i class = "fa fa-cog fa-lg"></i>
-      </a>
-      <a href="includes/handlers/logout.php">
-        <i class = "fa fa-sign-out fa-lg"></i>
-      </a>
+        <?php
+            //Unread messages
+            $messages = new Message($con, $userLoggedIn);
+            $num_messages = $messages->getUnreadNumber();
+
+            //Unread notifications
+            // $notifications = new Notification($con, $userLoggedIn);
+            // $num_notifications = $notifications->getUnreadNumber();
+            //
+            // //Unread notifications
+            // $user_obj = new User($con, $userLoggedIn);
+            // $num_requests = $user_obj->getNumberOfFriendRequests();
+        ?>
+        <a href="<?php echo $userLoggedIn?>" id = 'navname' style="font-family: 'Merienda'">
+            <?php echo $user['first_name']?>
+        </a>
+        <a href="index.php">
+            <i class = "fa fa-home fa-lg"></i>
+        </a>
+        <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'message')">
+            <i class = "fa fa-envelope fa-lg"></i>
+            <?php
+                if($num_messages > 0)
+                 echo '<span class="notification_badge" id="unread_message">' . $num_messages . '</span>';
+            ?>
+        </a>
+        <a href="javascript:void(0);" conclick  = "getDropdownDate('<?php echo $userLoggedIn;?>','notification')">
+            <i class = "fa fa-bell-o fa-lg"></i>
+        </a>
+        <a href="requests.php">
+            <i class = "fa fa-user fa-lg"></i>
+        </a>
+        <a href="#">
+            <i class = "fa fa-cog fa-lg"></i>
+        </a>
+        <a href="includes/handlers/logout.php">
+            <i class = "fa fa-sign-out fa-lg"></i>
+        </a>
 
     </nav>
 
@@ -96,13 +113,13 @@ if(isset($_SESSION['username'])){
 
 
               if(type == 'notification'){
-                  
+
                   pageName = "ajax_load_notifications.php";
 
               }
 
               else if(type == 'message'){
-                  alert("messages!");
+                  //alert("messages!");
                   pageName = "ajax_load_messages.php";
 
               }
@@ -119,7 +136,7 @@ if(isset($_SESSION['username'])){
                       $('.dropdown_data_window').find('.nextPageDropdownData').remove(); //Removes current .nextpage
                       $('.dropdown_data_window').find('.noMoreDropdownData').remove(); //Removes current .nextpage
 
-                      alert("success!");
+                      //alert("success!");
                       $('.dropdown_data_window').append(response);
                   }
               });
