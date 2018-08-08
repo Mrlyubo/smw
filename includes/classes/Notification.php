@@ -13,7 +13,7 @@ class Notification {
         $query = mysqli_query($this->con, "SELECT * FROM notifications WHERE viewed='no' AND user_to='$userLoggedIn'");
         return mysqli_num_rows($query);
     }
-    public function getNotifications($data, $limit) {
+    public function getNotifications($data, $limit) {//copy from function getConvosDropdown
 
 		$page = $data['page'];
 		$userLoggedIn = $this->user_obj->getUsername();
@@ -118,7 +118,7 @@ class Notification {
 			}
 
 			$opened = $row['opened'];
-			$style = ($opened == 'no') ? "background-color: #DDEDFF;" : "";
+ 			$style = ($opened == 'no') ? "background-color: #DDEDFF;" : "";
 
 			$return_string .= "<a href='" . $row['link'] . "'>
 									<div class='resultDisplay resultDisplayNotification' style='" . $style . "'>
@@ -128,7 +128,7 @@ class Notification {
 										<p class='timestamp_smaller' id='grey'>" . $time_message . "</p>" . $row['message'] . "
 									</div>
 								</a>";
-		}
+		}//End while($row = mysqli_fetch _array($query))
 
 
 		//If posts were loaded

@@ -1,6 +1,15 @@
 $(document).ready(function() {
+    $('#search_text_input').focus(function() {
+        if(window.matchMedia( "(min-width: 800px)" ).matches) {//if the window is wide enough
+            $(this).animate({width: '250px'}, 500);
+        }
+    });
 
-  $('#submit_profile_post').click(function(){
+    $('.button_holder').on('click', function() {
+        document.search_form.submit();
+    });
+
+    $('#submit_profile_post').click(function(){
       $.ajax({
           url: "includes/handlers/ajax_submit_profile_post.php",
           type: "POST",
@@ -14,6 +23,26 @@ $(document).ready(function() {
           }
       });
   });
+});
+
+//when user click on the area outside the active dropdown menu, close it automatically.
+$(document).click(function(e){
+
+	if(e.target.class != "search_results" && e.target.id != "search_text_input") {
+
+		$(".search_results").html("");
+		$('.search_results_footer').html("");
+		$('.search_results_footer').toggleClass("search_results_footer_empty");
+		$('.search_results_footer').toggleClass("search_results_footer");
+	}
+
+	if(e.target.className != "dropdown_data_window") {
+
+		$(".dropdown_data_window").html("");
+		$(".dropdown_data_window").css({"padding" : "0px", "height" : "0px"});
+	}
+
+
 });
 
   function getUsers(value, user) {
@@ -58,3 +87,25 @@ $(document).ready(function() {
   	}
 
   }
+
+  function getLiveSearchUsers(value, user) {
+
+	$.post("includes/handlers/ajax_search.php", {query:value, userLoggedIn: user}, function(data) {//Ajax call
+
+		if($(".search_results_footer_empty")[0]) {//in header.php
+			$(".search_results_footer_empty").toggleClass("search_results_footer");
+			$(".search_results_footer_empty").toggleClass("search_results_footer_empty");
+		}
+
+		$('.search_results').html(data);
+		$('.search_results_footer').html("<a href='search.php?q=" + value + "'>See All Results</a>");
+
+		if(data == "") {
+			$('.search_results_footer').html("");
+			$('.search_results_footer').toggleClass("search_results_footer_empty");
+			$('.search_results_footer').toggleClass("search_results_footer");
+		}
+
+	});
+
+}
