@@ -471,7 +471,7 @@ img {
 	line-height: 1;
 	color: #fff;
 	text-align: center;
-	white-space: nowrap;
+	/* white-space: nowrap; */
 	vertical-align: baseline;
 	background-color: #F00;
 	border-radius: 10px;
