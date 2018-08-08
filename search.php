@@ -51,7 +51,8 @@
 
 
     		echo "<p id='grey'>Try searching for:</p>";
-    		echo "<a href='search.php?q=" . $query ."&type=name'>Names</a>, <a href='search.php?q=" . $query ."&type=username'>Usernames</a><br><br><hr id='search_hr'>";
+    		echo "<a href='search.php?q=" . $query ."&type=name'>Names</a>,
+                  <a href='search.php?q=" . $query ."&type=username'>Usernames</a><br><br><hr id='search_hr'>";
 
     		while($row = mysqli_fetch_array($usersReturnedQuery)) {
     			$user_obj = new User($con, $user['username']);
@@ -79,7 +80,7 @@
 
     					if($user_obj->isFriend($row['username'])) {
     						$user_obj->removeFriend($row['username']);
-    						header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+    						header("Location: http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");//refresh the current page.
     					}
     					else if($user_obj->didReceiveRequest($row['username'])) {
     						header("Location: requests.php");
