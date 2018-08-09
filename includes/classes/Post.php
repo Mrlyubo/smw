@@ -9,11 +9,37 @@ class Post {
     }
 
     public function submitPost($body, $user_to) {
-        $body = strip_tags($body);//remove html strip_tags
-        $body = mysqli_real_escape_string($this->con, $body);//Deletes special characters
-        $check_empty = preg_replace('/\s+/', '', $body);//Deletes all spaces
+        $body = strip_tags($body); //removes html tags
+		$body = mysqli_real_escape_string($this->con, $body);
+		$body = str_replace('\r\n', "\n", $body);
+		$body = nl2br($body);
+		$check_empty = preg_replace('/\s+/', '', $body); //Deltes all spaces
 
-        if($check_empty != ""){
+		if($check_empty != "") {
+
+
+			$body_array = preg_split("/\s+/", $body);
+
+			foreach($body_array as $key => $value) {
+                // foreach (array_expression as $value){ 语句 }
+                // foreach (array_expression as $key => $value) { 语句 }
+                // $value,$key 就相当于循环变量，比如for循环里面的$i一样，可以随便选择名字，
+                // 在循环中会依次等于数组的各个元素的值和下标。
+                // 第一种格式遍历给定的 array_expression 数组。每次循环中，当前单元的值被赋给
+                // $value 并且数组内部的指针向前移一步（因此下一次循环中将会得到下一个单元）。
+                // 第二种格式做同样的事，只除了当前单元的键名也会在每次循环中被赋给变量 $key。
+
+				if(strpos($value, "www.youtube.com/watch?v=") !== false) {
+
+					$link = preg_split("!&!", $value);
+					$value = preg_replace("!watch\?v=!", "embed/", $link[0]);
+					$value = "<br><iframe width=\'420\' height=\'315\' src=\'" . $value ."\'></iframe><br>";
+					$body_array[$key] = $value;
+
+				}
+
+			}
+			$body = implode(" ", $body_array);//把数组元素组合为一个字符串
 
             //Curren date and time
             $date_added = date('Y-m-d H:i:s',time());

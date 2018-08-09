@@ -102,7 +102,7 @@
                  echo '<span class="notification_badge" id="unread_requests">' . $num_requests . '</span>';
             ?>
         </a>
-        <a href="setting.php">
+        <a href="settings.php">
             <i class = "fa fa-cog fa-lg"></i>
         </a>
         <a href="includes/handlers/logout.php">
