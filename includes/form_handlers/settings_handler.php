@@ -39,7 +39,7 @@ if(isset($_POST['update_password'])) {
 		if($new_password_1 == $new_password_2) {
 			if(strlen($new_password_1) <= 4) {
 				$password_message = "Sorry, your password must be greater than 4 characters<br><br>";
-			} else {
+			}			else {
 				$new_password_md5 = md5($new_password_1);
 				$password_query = mysqli_query($con, "UPDATE users SET password='$new_password_md5'
                     WHERE username='$userLoggedIn'");

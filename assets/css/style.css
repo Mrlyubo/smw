@@ -14,7 +14,9 @@ body {
   position: fix;
   z-index: 10;
 }
-
+#fileToUpload {
+    margin: 5px;
+}
 .logo a {
   font-family: 'Kalam';
   margin-left: 20px;
